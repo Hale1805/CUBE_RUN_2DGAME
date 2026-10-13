@@ -18,7 +18,6 @@ var level_time: float = 0.0
 var level_attempts: int = 1
 
 # Khai báo đường dẫn lưu file. 
-# Chữ "user://" cực kỳ quan trọng, nó sẽ tự động tìm đến thư mục AppData/Roaming trên Windows của người chơi.
 const SAVE_PATH = "user://savegame.cfg"
 
 # Hàm này sẽ tự động chạy ngay khi người chơi vừa click đúp mở game lên
@@ -28,7 +27,7 @@ func _ready() -> void:
 # Hàm lưu dữ liệu vào ổ cứng
 func save_data() -> void:
 	var config = ConfigFile.new()
-	# Tạo một mục tên là "Progress", lưu biến level_1 vào đó
+	# Tạo một mục tên là "Progress", lưu biến all_levels vào đó
 	config.set_value("Progress", "all_levels", level_progress)
 	config.save(SAVE_PATH)
 

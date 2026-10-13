@@ -1,6 +1,6 @@
 extends Area2D
 
-# Lực nảy này sẽ đẩy bạn vọt lên trần nhà (khoảng 800 - 1000 là vừa đẹp)
+# Lực nảy này sẽ đẩy player vọt lên trần nhà
 @export var jump_force: float = 900.0 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -45,7 +45,6 @@ func _on_exit_pressed() -> void:
 	#Reset biến đếm thời gian và attempt khi thoát
 	Global.reset_level_stats()
 	TransitionManager.change_scene("res://level_menu.tscn")
-	#get_tree().call_deferred("change_scene_to_file", "res://level_menu.tscn")
 
 func show_win_screen() -> void:
 	# 1. Cập nhật label text trước khi hiển thị

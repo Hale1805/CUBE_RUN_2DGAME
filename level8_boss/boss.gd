@@ -1,6 +1,6 @@
 extends Area2D
 
-# Biến này để bạn kéo thả file void_ball.tscn từ FileSystem vào Inspector
+# Biến này để kéo thả file các scene đạn từ FileSystem vào Inspector
 @export var void_ball_scene: PackedScene
 @export var beam_1_scene: PackedScene
 @export var beam_2_scene: PackedScene
@@ -38,11 +38,11 @@ func _process(delta: float) -> void:
 	#Di chuyển dọc: Lượn lên xuống bằng sin() với biên độ 100px
 	var offset_y = sin(time_passed * 2.2) * 100.0
 	
-	#Di chuyển ngang: Di chuyển trước sau bằng cos() với biên độ 100px
-	#Boss sẽ không bao giờ vượt qua biên độ +-100px so với base_distance_x (600)
+	#Di chuyển ngang: Di chuyển trước sau bằng cos() với biên độ 80px
+	#Boss sẽ không bao giờ vượt qua biên độ +-80px so với base_distance_x (600)
 	var offset_x = cos(time_passed * 1.5) * 80.0
 	
-	# Boss luôn đứng trước Player 500 pixel
+	# Boss luôn đứng trước Player 600 pixel
 	var target_x = player.global_position.x + base_distance_x + offset_x
 	var target_y = base_y + offset_y
 	

@@ -25,7 +25,6 @@ func _process(_delta: float) -> void:
 	var percentage = (current_distance / total_distance) * 100.0
 	
 	# Gọi các giai đoạn của Boss theo %
-	# Lưu ý: Phải check từ số to nhất xuống số nhỏ nhất
 	if percentage >= 96.0:
 		boss.die()
 	elif percentage >= 66.0:

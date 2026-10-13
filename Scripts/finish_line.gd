@@ -7,7 +7,6 @@ func _on_body_entered(body: Node2D) -> void:
 		# 1. Tắt vật lý để khối vuông lơ lửng ngay lập tức
 		body.set_physics_process(false)
 		
-		# (Tùy chọn) Xóa đà bay hiện tại nếu Player của bạn là CharacterBody2D
 		if "velocity" in body:
 			body.velocity = Vector2.ZERO 
 			
@@ -30,10 +29,10 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		# --- TWEEN 2: Xử lý trục Y (Tạo vòng cung nhảy lên) ---
 		var arc_tween = create_tween()
-		# Nửa đầu: Nảy lên cao hơn vị trí hiện tại 200 pixel
+		# Nửa đầu: Nảy lên cao hơn vị trí hiện tại 180 pixel
 		var jump_peak = body.global_position.y - 180.0 
 		arc_tween.tween_property(body, "global_position:y", jump_peak, duration * 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		# Nửa sau: Rơi tụt xuống tâm cửa
+		# Nửa sau: Rơi tụt xuống tâm
 		arc_tween.tween_property(body, "global_position:y", global_position.y, duration * 0.6).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 		
 		

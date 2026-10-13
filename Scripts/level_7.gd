@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player = $Player
-@onready var finish_line = $finish_line # Đảm bảo bạn có node này trong Level 7
+@onready var finish_line = $finish_line
 
 # Tham chiếu đến các background
 @onready var bg2 = $bg2
@@ -17,7 +17,7 @@ var passed_32: bool = false
 var passed_54: bool = false
 
 func _ready() -> void:
-	# 1. Ép Player quay về trạng thái khối vuông (kèm vùng va chạm 27px gốc) 
+	# 1. Ép Player quay về trạng thái khối vuông
 	if player != null and player.has_method("enter_cube_mode"):
 		player.enter_cube_mode()
 		
@@ -27,9 +27,9 @@ func _ready() -> void:
 		total_distance = finish_line.global_position.x - start_x
 		
 	# 3. Đặt trạng thái trong suốt ban đầu cho các phông nền
-	bg2.modulate.a = 1.0  # Hiện hoàn toàn
-	bg4.modulate.a = 0.0  # Tàng hình
-	bg1.modulate.a = 0.0  # Tàng hình
+	bg2.modulate.a = 1.0 
+	bg4.modulate.a = 0.0
+	bg1.modulate.a = 0.0
 
 func _process(_delta: float) -> void:
 	# Liên tục kiểm tra tiến trình của người chơi
@@ -53,6 +53,6 @@ func transition_bg(bg_out, bg_in) -> void:
 	# set_parallel(true) giúp 2 lệnh tween bên dưới chạy cùng một lúc thay vì chờ nhau
 	tween.set_parallel(true) 
 	
-	# Thời gian chuyển đổi đang đặt là 2 giây, bạn có thể tăng giảm số này để hiệu ứng nhanh/chậm hơn
+	# Thời gian chuyển đổi đặt là 2 giây
 	tween.tween_property(bg_out, "modulate:a", 0.0, 2)
 	tween.tween_property(bg_in, "modulate:a", 1.0, 2)

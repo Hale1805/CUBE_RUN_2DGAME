@@ -38,7 +38,7 @@ func swap_backgrounds() -> void:
 	
 	var tween = create_tween()
 	tween.set_parallel(true)
-	# Mờ chéo trong 2 giây (có thể tự chỉnh thời gian)
+	# Mờ chéo trong 2 giây
 	tween.tween_property(bg1, "modulate:a", 0.0, 2.0)
 	tween.tween_property(bg2, "modulate:a", 1.0, 2.0)
 	

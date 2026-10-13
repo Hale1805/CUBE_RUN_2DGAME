@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var death_effect_scene = preload("res://death_effect.tscn")
 
-# Tăng tốc độ và lực nhảy để đồng bộ với chướng ngại vật 
+# Các thông số lực nhảy và tốc chạy
 const RUN_SPEED = 700.0      
 const JUMP_VELOCITY = -1222.0
 var jump_buffer_timer: float = 0.0
@@ -39,13 +39,10 @@ func _physics_process(delta):
 	#Jump Buffer và xử lý ring
 	if jump_buffer_timer > 0:
 		jump_buffer_timer -= delta
-	#if Input.is_action_just_pressed("ui_accept"):
-		#jump_buffer_timer = 0.15
 	if jump_buffer_timer > 0 and current_ring != null:
 		current_ring.activate_ring(self)
 		current_ring = null
 		jump_buffer_timer = 0.0
-		#is_holding_jump = false
 		
 	#Logic đảo trọng lực cho khối tròn
 	if is_ball_mode and jump_buffer_timer > 0 and is_on_floor():
@@ -83,7 +80,7 @@ func _physics_process(delta):
 			velocity.y = -WAVE_SPEED_Y * gravity_dir
 		else:
 			velocity.y = WAVE_SPEED_Y * gravity_dir
-		#Xoay hình ảnh (chĩa đầu nhọn lên/xuống 45 dộ)
+		#Xoay hình ảnh
 		var target_rotation_deg = rad_to_deg(atan2(velocity.y, velocity.x))
 		
 		sprite.rotation_degrees = move_toward(sprite.rotation_degrees, target_rotation_deg, 1500 * delta)
@@ -187,8 +184,6 @@ func die():
 	get_tree().paused = false
 	Global.level_attempts += 1
 	TransitionManager.reload_level()
-	#get_tree().reload_current_scene()
-	#get_tree().call_deferred("reload_current_scene")
 
 func enter_ship_mode():
 	is_ship_mode = true
